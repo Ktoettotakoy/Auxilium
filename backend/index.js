@@ -1,10 +1,11 @@
 import http from 'http';
+import output from './agent/apiAccess.js';
 
 // Create a server
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
+  res.end(output);
 });
 
 // Define the port the server will listen on
