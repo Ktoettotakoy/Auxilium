@@ -1,4 +1,5 @@
 import http from 'http';
+import output from './agent/apiAccess.js';
 import handleSubmit from './routes/submit.js';
 
 
@@ -9,6 +10,7 @@ const requestHandler = async (req, res) => {
         try {
             const response = await handleSubmit(req, res);
             console.log(response);
+            console.log(output);
             
         } catch (error) {
             console.error('Error handling submission:', error);
