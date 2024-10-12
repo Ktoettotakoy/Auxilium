@@ -21,7 +21,7 @@ async function generateFormResponse(query) {
     max_tokens: 256,
     temperature: 0.2,
     top_p: 0.9,
-    return_citations: true,
+    return_citations: false,
     search_domain_filter: ["perplexity.ai"],
     return_images: false,
     return_related_questions: false,

@@ -122,6 +122,7 @@ information by the user as empty "" in the json object:
 This is the format you have to follow to generate the json object based on user input:
 
 {
+  "report_name": "",
   "employee_details": {
     "title": "",
     "first_name": "",
