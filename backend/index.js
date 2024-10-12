@@ -9,25 +9,29 @@ import sendResponseBack from "./routes/sendResponseBack.js";
 
 let submittedData = null;
 
-// Create an async function to handle requests
+// Function to handle requests to the server
 const requestHandler = async (req, res) => {
   // Handle POST requests to /submit
   if (req.method === "POST" && req.url === "/submit") {
     try {
       
-      // retrieve data from 
+      // retrieve data from user input fields
       const submittedJson = await handleSubmit(req, res);
       
       if (!submittedJson) {
-        return; // Exit the function early to prevent further execution
+        // Exit the function early to prevent further execution
+        return; 
       }
 
       // debug print
       console.log(submittedJson);
 
-      
       const response = await output(submittedJson);
+      
+      // debug print
       console.log(response.choices[0].message.content);
+      
+      // update "global" variable that it used to pass output back to the client
       submittedData = response.choices[0].message.content;
 
     } catch (error) {
@@ -36,8 +40,8 @@ const requestHandler = async (req, res) => {
       res.end(JSON.stringify({ error: "Internal Server Error" }));
     }
   } 
-  // Handle GET requests to /sendResponseBack
   else if (req.method === "GET" && req.url === "/getResponse") {
+    // Handle GET requests to /sendResponseBack
     // Check if there is data to send back
     await sendResponseBack(req, res, submittedData);
   }  
@@ -47,6 +51,7 @@ const requestHandler = async (req, res) => {
     res.end("404 Not Found");
   }
 };
+
 // Create the server
 const server = http.createServer(requestHandler);
 
@@ -58,4 +63,4 @@ server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
 
-//initAI
+
