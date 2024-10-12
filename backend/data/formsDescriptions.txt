@@ -1,10 +1,13 @@
+This is a formsDescriptions.txt file, use it wisely, next prompt from the system is going to explain in more details how to use it.
+
+
 ---------------------------------------------- WORKPLACE RELATIONS FORM --------------------------------------------------------
 
 Given below are generally/frequently asked questions by the user, if the input contains any of the similar phrases of the questions or sentences then 
 reply with paraphrased and context relevant answer, suggesting a next course of action. Don't speak on something you don't understand, ask for more 
 information if you are lacking context.
 
-Explaination of Workplace Relations Complaint Form:
+Explanation of Workplace Relations Complaint Form:
 
 The WRC is an independent body and is not in a position to give legal advice.
 The information contained in the complaint form is not to be treated as advice for either
