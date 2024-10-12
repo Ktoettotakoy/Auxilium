@@ -1,0 +1,77 @@
+
+
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    font-family: Arial, sans-serif; /* Use a clean font */
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between; /* Align title and AUXILIUM */
+    align-items: center; /* Center vertically */
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 1.5em; /* Adjust font size as needed */
+  }
+  
+  .auxilium {
+    text-align: right;
+    font-size: 1.2em; /* Adjust font size as needed */
+    color: rgb(63, 156, 67)
+  }
+  
+  .complaint-type-header {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .complaint-section {
+    display: flex;
+    justify-content: space-between; /* Align dropdown and specific complaints */
+    margin-top: 20px;
+  }
+  
+  .dropdown-container {
+    flex: 1; /* Allow dropdown to take available space */
+    margin-right: 20px; /* Space between dropdown and specific complaints */
+  }
+  
+  .specific-complaints {
+    margin-top: 10px; /* Space above the specific complaints */
+  }
+  
+  .specific-complaints div {
+    margin-bottom: 10px; /* Space between radio buttons */
+  }
+  
+  .details-header {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .details-textarea {
+    width: 100%; /* Full width */
+    height: 150px; /* Adjust height as needed */
+    resize: none; /* Disable resizing */
+    margin-top: 10px;
+    padding: 10px; /* Padding for better text input */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .submit-button {
+    display: flex;
+    align-items: center; /* Center icon and text vertically */
+    justify-content: center; /* Center text */
+    border: none;
+    background-color: blue; /* Button color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px;
+    cursor: pointer; /* Pointer cursor on hover */
+  }
