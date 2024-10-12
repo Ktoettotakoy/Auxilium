@@ -6,6 +6,9 @@ node_modules/
 .pnp.js
 *package-lock.json
 
+# enbironment 
+backend/.env
+
 # testing
 /coverage
 
