@@ -12,7 +12,7 @@ async function generateFormResponse(query) {
 
   // Build the request payload
   const apiRequestJson = {
-    model: "llama-3.1-sonar-small-128k-online",
+    model: "llama-3.1-sonar-small-128k-chat",
     messages: [
       { role: "system", content: formsDescriptions},
       { role: "system", content: prompt},
