@@ -21,7 +21,7 @@ const handleSubmit = async (req, res) => {
             "Content-Type": "application/json",
           });
           res.end(JSON.stringify({ error: validated.message }));
-          resolve(); // Resolve the promise after sending the response
+          resolve(null); // Resolve the promise after sending the response
           return; // Early return to avoid further processing
         }
 

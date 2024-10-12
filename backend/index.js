@@ -18,9 +18,13 @@ const requestHandler = async (req, res) => {
       // retrieve data from 
       const submittedJson = await handleSubmit(req, res);
       
+      if (!submittedJson) {
+        return; // Exit the function early to prevent further execution
+      }
+
       // debug print
       console.log(submittedJson);
-      
+
       
       const response = await output(submittedJson);
       console.log(response.choices[0].message.content);
