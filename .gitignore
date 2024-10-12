@@ -9,6 +9,9 @@ node_modules/
 # enbironment 
 backend/.env
 
+# ignore wierd file
+backend/eng.traineddata
+
 # testing
 /coverage
 

@@ -11,11 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
-    "groq": "^3.60.0",
     "nodejs": "^0.0.0",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "tesseract.js": "^5.1.1"
   }
 }
