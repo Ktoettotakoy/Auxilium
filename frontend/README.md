@@ -6,5 +6,7 @@
 2. webpage frame 2 - first form
    ![screen2](readme_assets/screen2_s.png)
 
-3. gen ai
-4. server - client file transmition
+## If you need to run client(frontend)
+
+1. npm start
+2. or `cd ..` (to folder auxilium) and `npm run client`
