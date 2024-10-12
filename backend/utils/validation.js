@@ -4,12 +4,12 @@
  * @param {Object} data - The input JSON object to validate.
  * @param {string} data.Problem - The problem description. This field is required and cannot be null or empty.
  * @param {string} [data.AdditionalInformation] - Optional additional information related to the problem.
- * 
+ *
  * @returns {Object} Validation result.
  * @returns {boolean} isValid - Indicates if the input is valid.
  * @returns {number} [errorCode] IF THE isValid is false - The HTTP status code to return in case of validation failure.
  * @returns {string} [message] IF THE isValid is false - An error message describing why validation failed.
- * 
+ *
  * @example
  * // Valid input example:
  * const validInput = {
@@ -18,7 +18,7 @@
  * };
  * const validation = validateInput(validInput);
  * console.log(validation); // { isValid: true }
- * 
+ *
  * @example
  * // Invalid input example:
  * const invalidInput = { Problem: "" };
