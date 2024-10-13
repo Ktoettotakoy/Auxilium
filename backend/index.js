@@ -14,7 +14,17 @@ let submittedData = null;
 // Function to handle requests to the server
 const requestHandler = async (req, res) => {
   
+  // CORS Headers
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); // Allow these methods
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type"); // Allow these headers
 
+  // Handle OPTIONS (Preflight request for CORS)
+  if (req.method === "OPTIONS") {
+    res.writeHead(204); // No content
+    res.end();
+    return;
+  }
   
   // Handle POST requests to /submit
   if (req.method === "POST" && req.url === "/submit") {
