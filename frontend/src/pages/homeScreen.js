@@ -62,9 +62,9 @@ const HomeScreen = () => {
       navigate(`/formScreen`);
       break;
     case "Small Claims Form":
-      console.log("HIIIIIIII");
+      navigate('/smallClaims');
       break;
-
+      
     default:
       break;
   }
