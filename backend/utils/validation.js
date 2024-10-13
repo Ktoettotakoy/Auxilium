@@ -26,8 +26,9 @@
  * console.log(validation); // { isValid: false, errorCode: 422, message: "Problem field cannot be null or empty" }
  */
 const validateInput = (data) => {
+  console.log(data)
   // Check if 'Problem' is null or an empty string
-  if (!data.Problem || data.Problem.trim() === "") {
+  if (!data.Problem || data.Problem.trim() === "" || data.Problem.trim() === '') {
     return {
       isValid: false,
       errorCode: 422,

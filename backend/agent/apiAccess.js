@@ -48,7 +48,10 @@ async function generateFormResponse(query) {
     options
   );
 
+  
+
   const jsonResponse = await response.json(); // Convert response to JSON
+
   return jsonResponse;
 }
 
@@ -61,10 +64,10 @@ async function generateFormResponse(query) {
 // };
 
 async function output(input) {
-  console.log(input.Problem);
+  console.log(input);
 
   return new Promise((resolve) => {
-    const result = generateFormResponse(input.Problem);
+    const result = generateFormResponse(JSON.stringify(input));
     resolve(result);
   });
 }

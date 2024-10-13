@@ -8,8 +8,8 @@ async function processImage(imagePath) {
 }
 
 // Function to handle the image submission and send the response back
-const handleImageSubmission = async (req, res) => {
-  const imagePath = './data/tmp/test1.png'; // hardcoded for now
+const handleImageSubmission = async (req, res, imagePath) => {
+  // const imagePath = './data/tmp/test1.png'; // hardcoded for now
 
   try {
     

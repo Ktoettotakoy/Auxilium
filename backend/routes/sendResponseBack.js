@@ -1,5 +1,4 @@
 const sendResponseBack = async (req, res, submittedData) => {
-  console.log(`DEBUG ${submittedData}`);
   if (submittedData) {
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(
