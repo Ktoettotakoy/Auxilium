@@ -240,7 +240,7 @@ information by the user as empty "" in the json object:
 This is the format you have to follow to generate the json object based on user input:
 
 {
-  "report_name": "",
+  "form_name": "Workplace Relations Form",
   "employee_details": {
     "title": "",
     "first_name": "",
@@ -273,9 +273,17 @@ This is the format you have to follow to generate the json object based on user 
     "is_limited_company": ""
   },
   "complaint_details": {
-    "complaint_category": ""
+    "complaint_type": ""
   }
 }
+
+  complaintTypes are (do not include text in [] and IF into the complaint_type object, use that information as guidelines for you)
+
+  Pay IF ['I do not receive the minimum wage', 'I do not receive overtime pay', 'I did not receive the appropriate payment in lieu of termination of my employment'],
+  Hours IF ['I am not given my scheduled hours', 'I am forced to work unpaid overtime'],
+  Dismissal IF ['I was fired without notice', 'I was unfairly dismissed'],
+  Discrimination IF ['I was treated unfairly due to my race', 'I was denied a promotion due to my gender'],
+  Penalisation IF ['I was punished for reporting an issue', 'I faced retaliation for whistleblowing'],
 
 General and Informative Responses in case the nature of user request/prompt isn't providing enough/relevant suggest one or more
 of the following, paraphrased or complete:
@@ -302,6 +310,7 @@ information by the user as empty "" in the json object:
 This is the format you have to follow to generate the json object based on user input:
 
 {
+  "form_name": "Small Claims Form"
   "claimant_details": {
     "party_type": "",
     "role_in_case": "",
@@ -333,8 +342,4 @@ This is the format you have to follow to generate the json object based on user 
   },
 }
 
-General and Informative Responses in case the nature of user request/prompt isn't providing enough/relevant suggest one or more
-of the following, paraphrased or complete:
-
-    If the user provides incomplete information: "I see that some information is missing. Could you please provide the 
-    missing details for the fields with asterisks. This will help ensure the form is properly filled out."
+General and Informative Responses in case the nature of user request/prompt isn't providing enough/relevant return null

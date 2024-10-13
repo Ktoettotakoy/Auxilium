@@ -43,7 +43,7 @@ const requestHandler = async (req, res) => {
       const response = await output(submittedJson);
 
       // debug print
-      console.log(response.choices[0].message.content);
+      // console.log(response.choices[0].message.content);
 
       // update "global" variable that it used to pass output back to the client
       submittedData = response.choices[0].message.content;
