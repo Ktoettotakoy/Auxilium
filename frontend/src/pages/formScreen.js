@@ -8,7 +8,7 @@ const FormScreen = () => {
     name: "",
     surname: "",
     city: "",
-    position_held: "",
+    company_name: "",
     complaint_type: "",
   });
 
@@ -43,18 +43,18 @@ const FormScreen = () => {
 
   const updateFormDataFromApiResponse = (data) => {
     setFormData({
-      title: data.employee_details.title || "",
-      first_name: data.employee_details.first_name || "",
-      surname: data.employee_details.surname || "",
-      city: data.employee_details.town || "", 
-      position_held: data.employee_details.position_held || "",
-      complaint_type: data.complaint_details.complaint_type || "",
+      title: data.employee_details.title || " ",
+      first_name: data.employee_details.first_name || " ",
+      surname: data.employee_details.surname || " ",
+      city: data.employee_details.town || " ", 
+      position_held: data.employee_details.company_name || " ",
+      complaint_type: data.complaint_details.complaint_type || " ",
     });
   };
 
   useEffect(() => {
     fetchData(); // Call fetchData when the component mounts
-  }, []);
+  });
 
   // Handle input change
   const handleInputChange = (e) => {
@@ -114,7 +114,7 @@ const FormScreen = () => {
             type="text"
             name="position_held"
             placeholder="Position Held"
-            value={formData.position_held || ""} 
+            value={formData.company_name || ""} 
             onChange={handleInputChange}
           />
           <input
