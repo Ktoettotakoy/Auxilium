@@ -3,9 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import './formScreen.css';
 
 const FormScreen = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    title:"",
+    name: "",
+    surname: "",
+    city: "",
+    position_held: "",
+    complaint_type: "",
+  });
 
-  const [specificComplaints, setSpecificComplaints] = useState([]);
   const navigate = useNavigate();
 
   const fetchData = async () => {
@@ -22,32 +28,11 @@ const FormScreen = () => {
       }
 
       const data = await response.json();
+      console.log(data.data)
 
       // Safely check if data and data.data exist
       if (data && data.data) {
-        setFormData(prevData => ({
-          ...prevData,
-          employee_details: {
-            ...prevData.employee_details,
-            ...(data.data.employee_details || {}) // Merge with existing or use default
-          },
-          employment_details: {
-            ...prevData.employment_details,
-            ...(data.data.employment_details || {})
-          },
-          pay_details: {
-            ...prevData.pay_details,
-            ...(data.data.pay_details || {})
-          },
-          employer_details: {
-            ...prevData.employer_details,
-            ...(data.data.employer_details || {})
-          },
-          complaint_details: {
-            ...prevData.complaint_details,
-            ...(data.data.complaint_details || {})
-          }
-        }));
+        updateFormDataFromApiResponse(data.data)   
       } else {
         console.error('Unexpected data structure:', data);
       }
@@ -56,21 +41,27 @@ const FormScreen = () => {
     }
   };
 
+  const updateFormDataFromApiResponse = (data) => {
+    setFormData({
+      title: data.employee_details.title || "",
+      first_name: data.employee_details.first_name || "",
+      surname: data.employee_details.surname || "",
+      city: data.employee_details.town || "", 
+      position_held: data.employee_details.position_held || "",
+      complaint_type: data.complaint_details.complaint_type || "",
+    });
+  };
+
   useEffect(() => {
     fetchData(); // Call fetchData when the component mounts
   }, []);
 
+  // Handle input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const [section, field] = name.split('.'); // Use dot notation in input names
-
-    // Update the nested object within formData
-    setFormData(prevData => ({
-      ...prevData,
-      [section]: {
-        ...prevData[section],
-        [field]: value // Update the specific field
-      }
+    setFormData(prev => ({
+      ...prev,
+      [name]: value // Update the specific field
     }));
   };
 
@@ -82,54 +73,58 @@ const FormScreen = () => {
   return (
     <div className="container">
       <button onClick={() => navigate('/')} className="back-button">Back to Auxilium Home</button>
-
-      <form onSubmit={handleSubmit}> {/* Wrap your form fields in a form element */}
+  
+      <form onSubmit={handleSubmit}>
         <div className="header">
           <h1 className="title">Workplace Relations Commission</h1>
           <h2 className="auxilium">Autofill Powered By AUXILIUM</h2>
         </div>
-
+  
         <h3 className="details-header">Employee Details</h3>
         <div className="employee-details">
           <input
             type="text"
-            name="employee_details.title" // Use section.field notation
+            name="title" 
             placeholder="Title"
-            // value={formData.employee_details.title}
+            value={formData.title || ""} 
             onChange={handleInputChange}
           />
           <input
             type="text"
-            name="employee_details.first_name"
+            name="name"
             placeholder="First Name"
-            // value={formData.employee_details.first_name}
+            value={formData.name || ""} 
             onChange={handleInputChange}
           />
           <input
             type="text"
-            name="employee_details.surname"
+            name="surname"
             placeholder="Surname"
-            // value={formData.employee_details.surname}
+            value={formData.surname || ""} 
             onChange={handleInputChange}
           />
           <input
             type="text"
-            name="employee_details.position_held"
+            name="city"
+            placeholder="City"
+            value={formData.city || ""} 
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            name="position_held"
             placeholder="Position Held"
-            // value={formData.employee_details.position_held}
+            value={formData.position_held || ""} 
             onChange={handleInputChange}
           />
           <input
             type="text"
-            name="employer_details.company_name"
-            placeholder="Company Name"
-            // value={formData.employer_details.company_name}
+            name="complaint_type"
+            placeholder="Complaint Type"
+            value={formData.complaint_type || ""} 
             onChange={handleInputChange}
           />
         </div>
-
-        {/* Additional sections would follow the same structure */}
-        
         <button type="submit" className="submit-button">
           <span role="img" aria-label="building">🏢</span> SUBMIT
         </button>
