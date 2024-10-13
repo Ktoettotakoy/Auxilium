@@ -45,9 +45,9 @@ const handleFileChange = async (event) => {
   }
 };
 
-useEffect(() => {
-  console.log("Updated problemData:", problemData);
-}, [problemData]);
+// useEffect(() => {
+//   console.log("Updated problemData:", problemData);
+// }, [problemData]);
 
  // Function to handle submission
  const handleSubmit = async () => {
@@ -55,7 +55,6 @@ useEffect(() => {
     ...problemData,
     Problem: userInput,
   };
-   console.log(updatedProblemData)
    try {
      const response = await fetch('http://localhost:50505/submit', {
        method: 'POST', // HTTP method
@@ -91,6 +90,9 @@ useEffect(() => {
      // Extract form_name from the response and set it to formName state
      if (result.data) {
        const parsedData = JSON.parse(result.data); // Assuming the result.data is a JSON string
+       if (!parsedData){
+          return;
+       }
        setFormName(parsedData.form_name); // Update state with form name
      }
      console.log("SENT")

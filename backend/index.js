@@ -30,22 +30,17 @@ const requestHandler = async (req, res) => {
   // Handle POST requests to /submit
   if (req.method === "POST" && req.url === "/submit") {
     try {
-      
-      console.log("HIADNAWDMAL:WDM:AWMDMAWDM")
       // retrieve data from user input fields
       const submittedJson = await handleSubmit(req, res);
       if (!submittedJson) { return };
-
-      // Check for additional information
-      // if (req.body.additionalInformation) {
-      //   submittedJson.additionalInformation = req.body.additionalInformation;
-      // }
 
       // debug print
       // console.log(submittedJson);
 
       const response = await output(submittedJson);
-
+      if (!response){
+        return;
+      }
       // debug print
       // console.log(response.choices[0].message.content);
 
@@ -67,7 +62,10 @@ const requestHandler = async (req, res) => {
   else if (req.method === "GET" && req.url === "/getResponse") {
     // Handle GET requests to /sendResponseBack
     // Check if there is data to send back
-    await sendResponseBack(req, res, submittedData);
+    if (submittedData){
+      await sendResponseBack(req, res, submittedData);
+    }
+    
   } else if (req.method === "POST" && req.url === "/upload") {
     
     const imagePath = await handleFileUpload(req, res);

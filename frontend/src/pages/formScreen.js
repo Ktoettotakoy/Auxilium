@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import './formScreen.css';
 
 const FormScreen = () => {
-  const [formData, setFormData] = useState({
+  let formData = {
     title:"",
     name: "",
     surname: "",
     city: "",
     company_name: "",
     complaint_type: "",
-  });
+  };
 
   const navigate = useNavigate();
 
@@ -28,32 +28,28 @@ const FormScreen = () => {
       }
 
       const data = await response.json();
-      console.log(data.data)
 
       // Safely check if data and data.data exist
-      if (data && data.data) {
-        updateFormDataFromApiResponse(data.data)   
-      } else {
-        console.error('Unexpected data structure:', data);
-      }
+      
+      updateFormDataFromApiResponse(data)   
+      console.log(formData)
+      
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
 
-  
-
-  const updateFormDataFromApiResponse = (data) => {
-    const parsedData = JSON.stringify(data); // Assuming the data is a JSON string
-    setFormData({
-      title: parsedData.title || "",
-      first_name: parsedData.first_name || "",
-      surname: parsedData.surname || "",
-      city: parsedData.town || "", 
-      position_held: parsedData.company_name || "",
-      complaint_type: parsedData.complaint_type || "",
-    });
+const updateFormDataFromApiResponse = (data) => {
+  console.log(data.data)
+  formData= {
+    title: data.data.employee_details?.title,
+    first_name: data.data.employee_details?.first_name,
+    surname: data.data.employee_details?.surname,
+    city: data.data.employee_details?.town, 
+    position_held: data.data.employee_details?.position_held,
+    complaint_type: data.data.complaint_details?.complaint_type
   };
+};
 
   useEffect(() => {
     fetchData(); // Call fetchData when the component mounts
@@ -62,10 +58,10 @@ const FormScreen = () => {
   // Handle input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
+    formData = {
+      ...formData,
       [name]: value // Update the specific field
-    }));
+    };
   };
 
   const handleSubmit = (e) => {
@@ -117,7 +113,7 @@ const FormScreen = () => {
             type="text"
             name="position_held"
             placeholder="Position Held"
-            value={formData.company_name || ""} 
+            value={formData.position_held || ""} 
             onChange={handleInputChange}
           />
           <input
