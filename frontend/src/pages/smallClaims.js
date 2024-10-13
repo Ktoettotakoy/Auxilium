@@ -20,29 +20,10 @@ const SmallClaims = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-  
+        
         const data = await response.json();
-  
-        // Safely check if data and data.data exist
-        if (data && data.data) {
-          setFormData(prevData => ({
-            ...prevData,
-            claimant_details: {
-              ...prevData.claimant_details,
-              ...(data.data.claimant_details || {}) // Merge with existing or use default
-            },
-            defendant_details: {
-              ...prevData.defendant_details,
-              ...(data.data.defendant_details || {})
-            },
-            case_details: {
-              ...prevData.case_details,
-              ...(data.data.case_details || {})
-            }
-          }));
-        } else {
-          console.error('Unexpected data structure:', data);
-        }
+        console.log(data)
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
