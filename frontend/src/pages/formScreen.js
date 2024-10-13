@@ -41,20 +41,23 @@ const FormScreen = () => {
     }
   };
 
+  
+
   const updateFormDataFromApiResponse = (data) => {
+    const parsedData = JSON.stringify(data); // Assuming the data is a JSON string
     setFormData({
-      title: data.employee_details.title || " ",
-      first_name: data.employee_details.first_name || " ",
-      surname: data.employee_details.surname || " ",
-      city: data.employee_details.town || " ", 
-      position_held: data.employee_details.company_name || " ",
-      complaint_type: data.complaint_details.complaint_type || " ",
+      title: parsedData.title || "",
+      first_name: parsedData.first_name || "",
+      surname: parsedData.surname || "",
+      city: parsedData.town || "", 
+      position_held: parsedData.company_name || "",
+      complaint_type: parsedData.complaint_type || "",
     });
   };
 
   useEffect(() => {
     fetchData(); // Call fetchData when the component mounts
-  });
+  }, []);
 
   // Handle input change
   const handleInputChange = (e) => {
